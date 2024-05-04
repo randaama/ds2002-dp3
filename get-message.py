@@ -3,8 +3,12 @@ from botocore.exceptions import ClientError
 import requests
 import json
 
+# I was unable to test if my code was working because my queue was empty 
+# before I even ran my code (I got "no message in queue" message the first time I ran the given code)
+# 
+
 # Set up your SQS queue URL and boto3 client
-url = "https://sqs.us-east-1.amazonaws.com/440848399208/xxxxxxx"
+url = "https://sqs.us-east-1.amazonaws.com/440848399208/gba4fj"
 sqs = boto3.client('sqs')
 
 def delete_message(handle):
@@ -17,6 +21,8 @@ def delete_message(handle):
         print("Message deleted")
     except ClientError as e:
         print(e.response['Error']['Message'])
+
+message_dict = {}
 
 def get_message():
     try:
@@ -44,6 +50,9 @@ def get_message():
             print(f"Order: {order}")
             print(f"Word: {word}")
 
+            message_dict[order] = word
+            delete_message(handle)
+
         # If there is no message in the queue, print a message and exit    
         else:
             print("No message in the queue")
@@ -53,6 +62,15 @@ def get_message():
     except ClientError as e:
         print(e.response['Error']['Message'])
 
+
+
+
 # Trigger the function
-if __name__ == "__main__":
-    get_message()
+for i in range(10):
+   if __name__ == "__main__":
+        get_message()
+
+sorted_messages = dict(sorted(message_dict.items()))
+
+for val in sorted_messages.values():
+   print(val)

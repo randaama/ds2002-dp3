@@ -3,4 +3,6 @@
 
 # Put your reassembled phrase here:
 
-
+My queue was empty before I started running my code (when I ran the given code to get one
+message, it was already giving me the "no message in the queue" error), 
+so I wasn't able to test my code or get any words for my phrase.
