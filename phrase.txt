@@ -2,6 +2,7 @@
 
 
 # Put your reassembled phrase here:
+People who know what they're talking about don't need PowerPoint.
 
 My queue was empty before I started running my code (when I ran the given code to get one
 message, it was already giving me the "no message in the queue" error), 
